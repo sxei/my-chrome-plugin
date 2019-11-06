@@ -28,6 +28,10 @@
     if (!window[tempFetchName]) {
         window[tempFetchName] = window.fetch;
         window.fetch = function(url, options) {
+            if (url && typeof url === 'object') {
+                options = url;
+                url = options.url;
+            }
             if (backlist.some(item => url.indexOf(item) === 0)) {
                 // 拦截命中黑名单的URL，注意，即使不调用也必须返回一个promise
                 return new Promise(resolve => resolve());
