@@ -1,0 +1,51 @@
+{
+	"manifest_version": 2,
+	"name": "麻拐专属插件",
+	"description": "麻拐专属插件",
+	"version": "1.0.0",
+	"homepage_url": "https://haoji.me",
+	"icons": {
+		"16": "images/icon.png",
+		"48": "images/icon.png",
+		"128": "images/icon.png"
+	},
+	"background": {
+		"scripts": ["js/background.js"],
+		"persistent": true
+	},
+	"browser_action": {
+		"default_icon": "images/icon.png",
+		"default_title": "麻拐专属插件",
+		"default_popup": "html/popup.html"
+	},
+	"content_scripts": [
+		{
+			"all_frames": false,
+			"css": [ "css/content-script.css" ],
+			"js": [ "js/content-script.js" ],
+			"matches": [ "http://*/*", "https://*/*" ],
+			"run_at": "document_start"
+		},
+		{
+			"all_frames": false,
+			"js": [ "js/content-script-end.js" ],
+			"matches": [ "http://*/*", "https://*/*" ],
+			"run_at": "document_end"
+		}
+	],
+	"web_accessible_resources": ["js/injected-script.js"],
+	"permissions":
+	[
+		"contextMenus",
+		"tabs",
+		"notifications",
+		"webRequest",
+		"webRequestBlocking",
+		"storage",
+		"cookies",
+		"file://*/*",
+		"http://*/*",
+		"https://*/*"
+	],
+	"omnibox": { "keyword" : "go" }
+}
