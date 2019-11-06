@@ -10,7 +10,7 @@
 		"128": "images/icon.png"
 	},
 	"background": {
-		"scripts": ["js/background.js"],
+		"scripts": ["js/xei.js", "js/background.js"],
 		"persistent": true
 	},
 	"browser_action": {

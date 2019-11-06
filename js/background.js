@@ -1,10 +1,14 @@
 // web请求监听，最后一个参数表示阻塞式，需单独声明权限：webRequestBlocking
 chrome.webRequest.onBeforeRequest.addListener(details => {
+    // 强制忽略所有spm参数！
+    if (xei.getParam('spm', null, details.url)) {
+        return {redirectUrl: xei.delParam('spm', details.url)};
+    }
     // console.log('onBeforeRequest', details);
     // if (details.url.indexOf('https://retcode.taobao.com/r.png') === 0) {
     //     return {cancel: true};
     // }
-}, {urls: ["<all_urls>"]}, ["blocking"]);
+}, {urls: ['<all_urls>']}, ['blocking']);
 
 // chrome.webRequest.onResponseStarted.addListener(details => {
 //     console.log('onResponseStarted', details);
