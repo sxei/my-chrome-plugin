@@ -47,5 +47,5 @@
 		"http://*/*",
 		"https://*/*"
 	],
-	"omnibox": { "keyword" : "go" }
+	"omnibox": { "keyword" : "hao" }
 }

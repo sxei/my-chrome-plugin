@@ -16,8 +16,9 @@
 })();
 
 
-//------------------- 屏蔽某些JS ------------------//
-// 重写fetch
+//------------------- 屏蔽retcode等请求 ------------------//
+// 想要屏蔽ajax请求，直接使用webRequest没用，即使cancel了还是会出现在Network，并且全是红色
+// 想要彻底屏蔽只能通过重写 fetch 和 XMLHttpRequest 来实现
 ;(function() {
     const backlist = [
         'https://arms-retcode.aliyuncs.com/r.png',
