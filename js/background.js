@@ -4,15 +4,23 @@ chrome.webRequest.onBeforeRequest.addListener(details => {
     if (xei.getParam('spm', null, details.url)) {
         return {redirectUrl: xei.delParam('spm', details.url)};
     }
-    // console.log('onBeforeRequest', details);
+    console.log('onBeforeRequest', details);
     // if (details.url.indexOf('https://retcode.taobao.com/r.png') === 0) {
     //     return {cancel: true};
     // }
-}, {urls: ['<all_urls>']}, ['blocking']);
+}, {urls: ['<all_urls>']}, ['blocking', 'extraHeaders', 'requestBody']);
 
-// chrome.webRequest.onResponseStarted.addListener(details => {
-//     console.log('onResponseStarted', details);
-// }, {urls: ['<all_urls>']}, ['extraHeaders', 'responseHeaders']);
+chrome.webRequest.onBeforeSendHeaders.addListener(details => {
+    console.log('onBeforeSendHeaders', details);
+}, {urls: ['<all_urls>']}, ['blocking', 'extraHeaders', 'requestHeaders']);
+
+chrome.webRequest.onResponseStarted.addListener(details => {
+    console.log('onResponseStarted', details);
+}, {urls: ['<all_urls>']}, ['extraHeaders', 'responseHeaders']);
+
+chrome.webRequest.onCompleted.addListener(details => {
+    console.log('onCompleted', details);
+}, {urls: ['<all_urls>']}, ['extraHeaders', 'responseHeaders']);
 
 
 //------------------- 搜索建议开始 ------------------//

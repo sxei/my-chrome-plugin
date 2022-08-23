@@ -49,7 +49,7 @@
         // 某些第三方库比较暴力导致 prototype.open 丢失，所以这里需要特殊判断一下
         if (!prototype[tempXhrOpenName] && prototype.open) {
             prototype[tempXhrOpenName] = prototype.open;
-            prototype.open = function(method, url, async, user, password) {
+            prototype.open = function(method, url, async = true, user, password) {
                 if (backlist.some(item => url.indexOf(item) === 0)) {
                     // do nothing
                 } else {

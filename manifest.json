@@ -43,6 +43,7 @@
 		"webRequestBlocking",
 		"storage",
 		"cookies",
+		"debugger",
 		"file://*/*",
 		"http://*/*",
 		"https://*/*"
